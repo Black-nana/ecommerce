@@ -20,14 +20,17 @@ interface Item {
 const Wishlist: React.FC = () => {
   const { user } = useAuth(); // Get the user 
   const dispatch = useDispatch();
-  const wishlist = useSelector((state: RootState) => state.wishlist);
+  const wishlist = useSelector((state: RootState) => state.wishlist.items);
 
   const handleRemoveFromWishlist = (itemId: number) => {
     dispatch(removeFromWishlist(itemId));
     toast.error('Item removed from wishlist');
   };
+  console.log('wishlist:', wishlist);
+
 
   const data = React.useMemo(() => wishlist, [wishlist]);
+
   console.log('data from wishlist in wishlist',data);
   
 
@@ -46,7 +49,7 @@ const Wishlist: React.FC = () => {
         accessor: 'id',
         Cell: ({ value }: { value: number }) => (
           <button onClick={() => handleRemoveFromWishlist(value)}
-          className='w-full flex gap-10 bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500'
+          className='w-fit flex gap-10 bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500 justify-center'
           ><FontAwesomeIcon icon={faHeartBroken} className='text-red-900' />
            <span>
               Remove

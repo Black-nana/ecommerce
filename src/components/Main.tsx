@@ -1,5 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store from '../appRedux/store/index';
+import { persistor } from '../appRedux/store/index';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -16,7 +20,9 @@ import Wishlist from './WishList';
 const queryClient = new QueryClient();
 const Main = () => {
   return (
+    <Provider store={store}>
     <AuthProvider>
+      <PersistGate loading={null} persistor={persistor}>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Navbar />
@@ -58,7 +64,9 @@ const Main = () => {
         <Footer />
       </BrowserRouter>
     </QueryClientProvider>
+    </PersistGate>
     </AuthProvider>
+    </Provider>
   );
 };
 

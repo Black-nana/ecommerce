@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TextGradient from './TextGradient';
 import bars from '../assets/bar-1.svg';
-import { removeFromCart, addToCart } from '../appRedux/slice/cart/cartSlice'; // Import addToCart action creator
+import { removeFromCart } from '../appRedux/slice/cart/cartSlice'; // Import addToCart action creator
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {toast, ToastContainer} from 'react-toastify';
