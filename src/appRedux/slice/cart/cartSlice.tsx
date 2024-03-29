@@ -7,14 +7,24 @@ interface CartItem {
 }
 
 interface CartState {
+  subtotal: number;
+  shippingCost: number;
+  tax: number;
+  total: number;
   cartItems: CartItem[];
 }
 
+const initialState: CartState = {
+  subtotal: 0,
+  shippingCost: 0,
+  tax: 0,
+  total: 0,
+  cartItems: [],
+};
+
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: {
-    cartItems: [],
-  },
+  initialState,
   reducers: {
     addToCart(state: CartState, action: PayloadAction<CartItem>) {
       const { id, quantity,...rest } = action.payload as CartItem & { quantity: number };
@@ -36,8 +46,15 @@ const cartSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
+    updateCartValues(state: CartState, action: PayloadAction<{ subtotal: number, shippingCost: number, tax: number, total: number }>) {
+      const { subtotal, shippingCost, tax, total } = action.payload;
+      state.subtotal = subtotal;
+      state.shippingCost = shippingCost;
+      state.tax = tax;
+      state.total = total;
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart,updateCartValues } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -23,6 +23,7 @@ const DataQuery = () => {
         throw new Error('Failed to fetch data');
       }
     },
+    // enabled: false, // Disable the query by default
   });
 };
 

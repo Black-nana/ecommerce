@@ -7,6 +7,9 @@ import bars from '../assets/bar-1.svg';
 import { useTable, Column } from 'react-table';
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {toast, ToastContainer} from 'react-toastify';
+import { useAuth } from '../Auth/useAuth';
+import { Link } from 'react-router-dom';
 
 interface Item {
   id: number;
@@ -15,11 +18,13 @@ interface Item {
 }
 
 const Wishlist: React.FC = () => {
+  const { user } = useAuth(); // Get the user 
   const dispatch = useDispatch();
   const wishlist = useSelector((state: RootState) => state.wishlist);
 
   const handleRemoveFromWishlist = (itemId: number) => {
     dispatch(removeFromWishlist(itemId));
+    toast.error('Item removed from wishlist');
   };
 
   const data = React.useMemo(() => wishlist, [wishlist]);
@@ -62,9 +67,10 @@ const Wishlist: React.FC = () => {
   } = useTable({ columns, data });
 
   return (
-    <div className='w-full grid place-items-center border-4 border-orange-500'>
+    <div className='w-full grid place-items-center pt-10'>
+      <ToastContainer/>
       <TextGradient>
-        <div className="grid place-items-center">
+        <div className="grid place-items-center my-10">
           <h1 className='text-inherit'>Wish List</h1>
           <div>
             <img
@@ -81,29 +87,39 @@ const Wishlist: React.FC = () => {
         </div>
       </TextGradient>
       <div className='w-full'>
-        <table {...getTableProps()} className='w-full '>
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} className='border-t-2 border-b-2'>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()} className=''>{column.render('Header')}</th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()} className=''>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()} className='border-b-4 py-5'>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()} className='p-4'>{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+       {user ? (
+         <table {...getTableProps()} className='w-full '>
+         <thead>
+           {headerGroups.map((headerGroup) => (
+             <tr {...headerGroup.getHeaderGroupProps()} className='border-t-2 border-b-2'>
+               {headerGroup.headers.map((column) => (
+                 <th {...column.getHeaderProps()} className=''>{column.render('Header')}</th>
+               ))}
+             </tr>
+           ))}
+         </thead>
+         <tbody {...getTableBodyProps()} className=''>
+           {rows.map((row) => {
+             prepareRow(row);
+             return (
+               <tr {...row.getRowProps()} className='border-b-4 py-5'>
+                 {row.cells.map((cell) => (
+                   <td {...cell.getCellProps()} className='p-4'>{cell.render('Cell')}</td>
+                 ))}
+               </tr>
+             );
+           })}
+         </tbody>
+       </table>
+       ):(
+        <div className='grid place-items-center h-64'>
+          <Link to={'/signin'}>
+          <button className='btn bg-red-400 text-white font-bold text-xl py-2 px-4 rounded-lg'>Please Log in</button>
+          </Link>
+        </div>
+       )
+
+       }
       </div>
     </div>
   );

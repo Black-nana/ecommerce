@@ -10,7 +10,7 @@ import Loading from './Loading';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../appRedux/slice/cart/cartSlice';
 import { addToWishlist } from '../appRedux/slice/whishlist/wishlistSlice'; // Import addToWishlist action creator
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify'; // Import toast and ToastContainer from react-toastify package
 import 'react-toastify/dist/ReactToastify.css';
 
 interface ProductDetailsProps {}
@@ -48,7 +48,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
       rating: data?.rating, // Add rating to the cart item
       quantity, // Directly access the quantity state
     };
-
     dispatch(addToCart(newData));
 
     // Trigger a toast notification
@@ -67,7 +66,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
     };
     dispatch(addToWishlist(newData));
     console.log('newData', newData);
-    
 
     // Trigger a toast notification
     toast.success('Item added to wishlist');
@@ -87,13 +85,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
 
   return (
     <div className="w-full grid place-items-center">
+      <ToastContainer /> {/* Initialize the ToastContainer component */}
       <div className="w-5/6 grid place-items-center grid-cols-2 p-10 mx-10 ">
         <div>
-          <img
-            src={data?.image}
-            alt={data?.title}
-            className="h-80 full"
-          />
+          <img src={data?.image} alt={data?.title} className="h-80 full" />
         </div>
         <div>
           <h2 className="font-bold text-4xl">{data?.title}</h2>
@@ -109,28 +104,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
             Price: GH‎ {data?.price}
           </p>
           <div className="py-4">
-            <QuantityInput
-              initialValue={1}
-              onChange={handleQuantityChange}
-            />
+            <QuantityInput initialValue={1} onChange={handleQuantityChange} />
           </div>
           <button
             onClick={handleAddToCart} // Use handleAddToCart function
-            className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              className="mr-2"
-            />{' '}
-            Add to Cart
+            className="btn bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-md mr-2"
+          >
+            <FontAwesomeIcon icon={faShoppingCart} className="mr-2" /> Add to
+            Cart
           </button>
           <button
             onClick={handleAddToWishlist} // Use handleAddToWishlist function
-            className="bg-gray-500 text-white px-4 py-2 rounded-md">
-            <FontAwesomeIcon
-              icon={faHeart}
-              className="mr-2"
-            />{' '}
-            Add to Wishlist
+            className="btn bg-gray-500 hover:bg-gray-400 text-white px-4 py-2 rounded-md"
+          >
+            <FontAwesomeIcon icon={faHeart} className="mr-2" /> Add to Wishlist
           </button>
         </div>
       </div>
