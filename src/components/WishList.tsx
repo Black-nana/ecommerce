@@ -49,7 +49,7 @@ const Wishlist: React.FC = () => {
         accessor: 'id',
         Cell: ({ value }: { value: number }) => (
           <button onClick={() => handleRemoveFromWishlist(value)}
-          className='w-fit flex gap-10 bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500 justify-center'
+          className='w-fit flex gap-4 items-center bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500  mx-auto'
           ><FontAwesomeIcon icon={faHeartBroken} className='text-red-900' />
            <span>
               Remove
@@ -70,7 +70,7 @@ const Wishlist: React.FC = () => {
   } = useTable({ columns, data });
 
   return (
-    <div className='w-full grid place-items-center pt-10'>
+    <div className='w-full grid place-items-center pt-10 mb-10'>
       <ToastContainer/>
       <TextGradient>
         <div className="grid place-items-center my-10">
@@ -89,25 +89,25 @@ const Wishlist: React.FC = () => {
           </div>
         </div>
       </TextGradient>
-      <div className='w-full'>
+      <div className='w-full grid place-items-center'>
        {user ? (
          <table {...getTableProps()} className='w-full '>
          <thead>
            {headerGroups.map((headerGroup) => (
-             <tr {...headerGroup.getHeaderGroupProps()} className='border-t-2 border-b-2'>
+             <tr {...headerGroup.getHeaderGroupProps()} className='border-t-2 border-b-2 bg-green-400'>
                {headerGroup.headers.map((column) => (
                  <th {...column.getHeaderProps()} className=''>{column.render('Header')}</th>
                ))}
              </tr>
            ))}
          </thead>
-         <tbody {...getTableBodyProps()} className=''>
+         <tbody {...getTableBodyProps()} className='w-full'>
            {rows.map((row) => {
              prepareRow(row);
              return (
-               <tr {...row.getRowProps()} className='border-b-4 py-5'>
+               <tr {...row.getRowProps()} className=''>
                  {row.cells.map((cell) => (
-                   <td {...cell.getCellProps()} className='p-4'>{cell.render('Cell')}</td>
+                   <td {...cell.getCellProps()} className='text-center p-4 bg-slate-50'>{cell.render('Cell')}</td>
                  ))}
                </tr>
              );
