@@ -16,6 +16,9 @@ import { AuthProvider } from '../Auth/useAuth';
 import UserProfile from './UserProfile';
 import Cart from './Cart';
 import Wishlist from './WishList';
+import Contact from '../pages/Contact';
+import { CheckOut } from '../pages/CheckOut';
+import OrderHistory from '../pages/OrderHistory';
 
 const queryClient = new QueryClient();
 const Main = () => {
@@ -45,6 +48,10 @@ const Main = () => {
             element={<About />}
           />
           <Route
+            path="/contact"
+            element={<Contact />}
+          />
+          <Route
             path="/product/:id"
             element={<ProductDetails />}
           />
@@ -55,6 +62,14 @@ const Main = () => {
           <Route
             path="/cart"
             element={<Cart/>}
+          />
+          <Route
+            path="/checkout"
+            element={<CheckOut/>}
+          />
+          <Route
+            path="/orderhistory"
+            element={<OrderHistory/>}
           />
            <Route
             path="/wishlist"

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {toast, ToastContainer} from 'react-toastify';
 import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
+import { parse, v4 as uuidv4 } from 'uuid';
+import { addToOderHistoy,removeFromOrderHistory } from '../appRedux/slice/history/historySlice';
 
 interface CartItems {
   id: number;
@@ -32,8 +34,11 @@ const Cart: React.FC = () => {
   const {user} = useAuth();
   const dispatch = useDispatch();
 
-  // localStorage.clear();
 
+  // localStorage.clear();
+const generateOderId = () =>{
+  return parseInt(uuidv4(), 16);
+}
 
   const { cartItems } = useSelector((state: RootState) => state.cart);
 
@@ -58,6 +63,27 @@ const Cart: React.FC = () => {
     cartItems.forEach((item) => dispatch(removeFromCart(item.id)));
     toast.error('Cart cleared');
   };
+
+  const handleAddToHistory = () => {
+    const orderId = generateOderId();
+    interface Order {
+      id: number;
+      items: CartItems[];
+      total: number;
+      date: string;
+    }
+    
+    const order: Order = {
+      id: orderId,
+      items: cartItems,
+      total: total,
+      date: new Date().toISOString(),
+    };
+    dispatch(addToOderHistoy(order));
+    console.log('order', order);
+    
+  };
+  
 
   return (
     <div className="w-full grid place-items-center">
@@ -157,9 +183,11 @@ const Cart: React.FC = () => {
            </p>
          </div>
          <div className="w-full">
-           <button className="btn btn-primary w-full">
+          <Link to={'/checkout'}>
+           <button className="btn btn-primary w-full" onClick={handleAddToHistory}>
              Proceed to Checkout
            </button>
+           </Link>
          </div>
        </div>
      </div>

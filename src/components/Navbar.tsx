@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user } = useAuth(); // Get the user 
 
   return (
-    <div className="navbar bg-base-100 ">
+    <div className="navbar bg-base-100 fix ">
       <div className="navbar-start">
         <div className="dropdown">
           <div

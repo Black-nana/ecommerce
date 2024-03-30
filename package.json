@@ -31,6 +31,7 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "uuid": "^9.0.1",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "@types/react-dom": "^18.2.22",
     "@types/react-table": "^7.7.20",
     "@types/tailwindcss": "^2.2.4",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface CartItem {
+interface CartItems {
   quantity: number;
   id: number;
   // Add other properties of a cart item
@@ -11,7 +11,7 @@ interface CartState {
   shippingCost: number;
   tax: number;
   total: number;
-  cartItems: CartItem[];
+  cartItems: CartItems[];
 }
 
 const initialState: CartState = {
@@ -26,25 +26,22 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state: CartState, action: PayloadAction<CartItem>) {
-      const { id, quantity,...rest } = action.payload as CartItem & { quantity: number };
-      const existingItem = state.cartItems.find((item) => item.id === id);
-      if (existingItem) {
-        // Implement update quantity functionality here
-        const updatedQuantity = existingItem.quantity ; //existingItem.quantity  + quantity
-        const updatedItem = { ...existingItem, quantity: updatedQuantity };
-        state.cartItems = state.cartItems.map((item) =>
-          item.id === id ? updatedItem : item
-        );
+    addToCart(state: CartState, action: PayloadAction<CartItems>) {
+      const { id, quantity, ...rest } = action.payload;
+      const existingItemIndex = state.cartItems.findIndex((item) => item.id === id);
+      
+      if (existingItemIndex !== -1) {
+        // Item already exists in the cart, update its quantity
+        const updatedItems = [...state.cartItems];
+        updatedItems[existingItemIndex].quantity += quantity;
+        state.cartItems = updatedItems;
       } else {
-        // Implement add to cart functionality here
-        state.cartItems.push({ id, quantity,...rest });
+        // Item does not exist in the cart, add it
+        state.cartItems.push({ id, quantity, ...rest });
       }
     },
     removeFromCart(state: CartState, action: PayloadAction<number>) {
-      state.cartItems = state.cartItems.filter(
-        (item) => item.id !== action.payload
-      );
+      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
     },
     updateCartValues(state: CartState, action: PayloadAction<{ subtotal: number, shippingCost: number, tax: number, total: number }>) {
       const { subtotal, shippingCost, tax, total } = action.payload;
@@ -56,5 +53,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart,updateCartValues } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateCartValues } = cartSlice.actions;
 export default cartSlice.reducer;
