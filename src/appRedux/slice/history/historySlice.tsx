@@ -1,36 +1,36 @@
-// orderHistorySlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// import {CartItems} from '../cart/cartSlice'; // Import the 'CartItems' interface from the appropriate file
-
-interface CartItems {
-    id: number;
-    quantity: number;
-    // Add other properties of a cart item
-  }
-
-interface Order {
-    id: number;
-    items: CartItems[]; // Update to match your CartItems interface
-    total: number;
-    date: string;
+export interface Order {
+  [x: string]: any;
+  id: string;
+  date: string;
+  total: number;
+  // Add other properties of an order
 }
 
-const initialState: Order[] = [];
+interface HistoryState {
+  orderHistory: Order[];
+}
 
-const orderHistorySlice = createSlice({
-  name: 'orderHistory',
-  initialState,
-  reducers: {
-addToOderHistoy: (state, action: PayloadAction<Order>) => {
-      state.push(action.payload);
-    },
-    removeFromOrderHistory: (state, action: PayloadAction<number>) => {
-        return state.filter(order => order.id !== action.payload);
+const initialState: HistoryState = {
+  orderHistory: [] as Order[],
+};
+
+const historySlice = createSlice({
+    name: 'history',
+    initialState,
+    reducers: {
+        addToOrderHistory(state: HistoryState, action: PayloadAction<Order>) {
+            state.orderHistory.push(action.payload);
+        },
+        removeFromOrderHistory: (state, action: PayloadAction<number>) => {
+            state.orderHistory = state.orderHistory.filter(order => order.id !== String(action.payload));
+        },
+        clearHistory(state: HistoryState) {
+          state.orderHistory = [];
       },
-  },
+    },
 });
 
-export const { addToOderHistoy,removeFromOrderHistory } = orderHistorySlice.actions;
-export default orderHistorySlice.reducer;
+export const { addToOrderHistory,removeFromOrderHistory,clearHistory } = historySlice.actions;
+export default historySlice.reducer;

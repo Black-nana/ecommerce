@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CartItems {
+  price: number;
+  title: string | undefined;
+  rating: any;
+  image: string;
   quantity: number;
   id: number;
   // Add other properties of a cart item
@@ -21,6 +25,13 @@ const initialState: CartState = {
   total: 0,
   cartItems: [],
 };
+export interface Order {
+  id: string;
+  date: string;
+  total: number;
+  items: CartItems[]; // Assuming CartItems type is defined somewhere
+  // Add other properties of an order
+}
 
 const cartSlice = createSlice({
   name: 'cart',
