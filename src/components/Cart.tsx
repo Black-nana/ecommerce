@@ -10,6 +10,7 @@ import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { addToOrderHistory } from '../appRedux/slice/history/historySlice'; // Import addToOrderHistory action creator
+import { clearCart } from '../appRedux/slice/cart/cartSlice';
 import { RootState } from '../appRedux/slice/rootReducer'; // Import RootState type
 import moment from 'moment';
 
@@ -64,6 +65,7 @@ const Cart: React.FC = () => {
     };
     dispatch(addToOrderHistory(order));
     console.log('order', order);
+    dispatch(clearCart());
   };
 
   return (

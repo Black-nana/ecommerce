@@ -39,8 +39,10 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state: CartState, action: PayloadAction<CartItems>) {
       const { id, quantity, ...rest } = action.payload;
-      const existingItemIndex = state.cartItems.findIndex((item) => item.id === id);
-      
+      const existingItemIndex = state.cartItems.findIndex(
+        (item) => item.id === id
+      );
+
       if (existingItemIndex !== -1) {
         // Item already exists in the cart, update its quantity
         const updatedItems = [...state.cartItems];
@@ -52,17 +54,36 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart(state: CartState, action: PayloadAction<number>) {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
     },
-    updateCartValues(state: CartState, action: PayloadAction<{ subtotal: number, shippingCost: number, tax: number, total: number }>) {
+    updateCartValues(
+      state: CartState,
+      action: PayloadAction<{
+        subtotal: number;
+        shippingCost: number;
+        tax: number;
+        total: number;
+      }>
+    ) {
       const { subtotal, shippingCost, tax, total } = action.payload;
       state.subtotal = subtotal;
       state.shippingCost = shippingCost;
       state.tax = tax;
       state.total = total;
     },
+    clearCart(state: CartState) {
+      state.cartItems = []; // Set cartItems to an empty array to clear the cart
+      // Optionally, reset other cart-related values if needed
+      state.subtotal = 0;
+      state.shippingCost = 0;
+      state.tax = 0;
+      state.total = 0;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, updateCartValues } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateCartValues, clearCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../appRedux/slice/rootReducer';
 import { clearHistory } from '../appRedux/slice/history/historySlice';
 import { useDispatch } from 'react-redux';
+import TextGradient from '../components/TextGradient';
+import bars from '../assets/bar-1.svg';
+import Loading from '../components/Loading';
 
 const OrderHistory: React.FC = () => {
   const dispatch = useDispatch();
@@ -11,7 +14,9 @@ const OrderHistory: React.FC = () => {
   console.log('orderHistory', orderHistory);
 
   if (!orderHistory) {
-    return <div>Loading...</div>; // Add loading state or handle other cases
+    return<div className="flex justify-center items-center h-screen">
+    <Loading />
+  </div>; // Add loading state or handle other cases
   }
 
   const handleClearHistory = () => {
@@ -21,7 +26,25 @@ const OrderHistory: React.FC = () => {
 
   return (
     <div>
-      <div>order History</div>
+      <div className='grid place-items-center my-4'>
+      <TextGradient>
+          <div className="grid place-items-center">
+            <p>Order History</p>
+            <div>
+              <img
+                alt="bar"
+                loading="lazy"
+                width="500"
+                height="50"
+                decoding="async"
+                data-nimg="1"
+                className="my-6"
+                src={bars}
+              />
+            </div>
+          </div>
+        </TextGradient>
+      </div>
       {orderHistory.map((order, index) => (
         <div
           key={order.id}
