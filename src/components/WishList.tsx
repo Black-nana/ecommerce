@@ -7,7 +7,7 @@ import bars from '../assets/bar-1.svg';
 import { useTable, Column } from 'react-table';
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {toast, ToastContainer} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ interface Item {
 }
 
 const Wishlist: React.FC = () => {
-  const { user } = useAuth(); // Get the user 
+  const { user } = useAuth(); // Get the user
   const dispatch = useDispatch();
   const wishlist = useSelector((state: RootState) => state.wishlist.items);
 
@@ -28,11 +28,9 @@ const Wishlist: React.FC = () => {
   };
   console.log('wishlist:', wishlist);
 
-
   const data = React.useMemo(() => wishlist, [wishlist]);
 
-  console.log('data from wishlist in wishlist',data);
-  
+  console.log('data from wishlist in wishlist', data);
 
   const columns = React.useMemo<Column<Item>[]>(
     () => [
@@ -48,33 +46,30 @@ const Wishlist: React.FC = () => {
         Header: 'Action',
         accessor: 'id',
         Cell: ({ value }: { value: number }) => (
-          <button onClick={() => handleRemoveFromWishlist(value)}
-          className='w-fit flex gap-4 items-center bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500  mx-auto'
-          ><FontAwesomeIcon icon={faHeartBroken} className='text-red-900' />
-           <span>
-              Remove
-           </span>
-           </button>
+          <button
+            onClick={() => handleRemoveFromWishlist(value)}
+            className="w-fit flex gap-4 items-center bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500  mx-auto">
+            <FontAwesomeIcon
+              icon={faHeartBroken}
+              className="text-red-900"
+            />
+            <span>Remove</span>
+          </button>
         ),
       },
     ],
     []
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
 
   return (
-    <div className='w-full grid place-items-center pt-10 mb-10'>
-      <ToastContainer/>
+    <div className="w-full grid place-items-center pt-10 mb-10">
+      <ToastContainer />
       <TextGradient>
         <div className="grid place-items-center my-10">
-          <h1 className='text-inherit'>Wish List</h1>
+          <h1 className="text-inherit">Wish List</h1>
           <div>
             <img
               alt="bar"
@@ -89,40 +84,56 @@ const Wishlist: React.FC = () => {
           </div>
         </div>
       </TextGradient>
-      <div className='w-full grid place-items-center'>
-       {user ? (
-         <table {...getTableProps()} className='w-full '>
-         <thead>
-           {headerGroups.map((headerGroup) => (
-             <tr {...headerGroup.getHeaderGroupProps()} className='border-t-2 border-b-2 bg-green-400'>
-               {headerGroup.headers.map((column) => (
-                 <th {...column.getHeaderProps()} className=''>{column.render('Header')}</th>
-               ))}
-             </tr>
-           ))}
-         </thead>
-         <tbody {...getTableBodyProps()} className='w-full'>
-           {rows.map((row) => {
-             prepareRow(row);
-             return (
-               <tr {...row.getRowProps()} className=''>
-                 {row.cells.map((cell) => (
-                   <td {...cell.getCellProps()} className='text-center p-4 bg-slate-50'>{cell.render('Cell')}</td>
-                 ))}
-               </tr>
-             );
-           })}
-         </tbody>
-       </table>
-       ):(
-        <div className='grid place-items-center h-64'>
-          <Link to={'/signin'}>
-          <button className='btn bg-red-400 text-white font-bold text-xl py-2 px-4 rounded-lg'>Please Log in</button>
-          </Link>
-        </div>
-       )
-
-       }
+      <div className="w-full grid place-items-center">
+        {user ? (
+          <table
+            {...getTableProps()}
+            className="w-full ">
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr
+                  {...headerGroup.getHeaderGroupProps()}
+                  className="border-t-2 border-b-2 bg-green-400">
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps()}
+                      className="">
+                      {column.render('Header')}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody
+              {...getTableBodyProps()}
+              className="w-full">
+              {rows.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr
+                    {...row.getRowProps()}
+                    className="">
+                    {row.cells.map((cell) => (
+                      <td
+                        {...cell.getCellProps()}
+                        className="text-center p-4 bg-slate-50">
+                        {cell.render('Cell')}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <div className="grid place-items-center h-64">
+            <Link to={'/signin'}>
+              <button className="btn bg-red-400 text-white font-bold text-xl py-2 px-4 rounded-lg">
+                Please Log in
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

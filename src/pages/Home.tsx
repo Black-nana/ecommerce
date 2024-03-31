@@ -6,6 +6,9 @@ import Product from '../components/Product';
 import TextGradient from '../components/TextGradient';
 import bars from '../assets/bar-1.svg';
 import Loading from '../components/Loading';
+import Badge from '../components/Badge';
+import CarouselShowCase from '../components/CarouselShowCase';
+import TrendingProducts from '../components/TrendingProducts';
 
 // Define the interface for product data
 interface ProductType {
@@ -35,9 +38,11 @@ const Home: React.FC = () => {
   return (
     <div className="w-full">
       <Hero />
+      <Badge />
       <div className="grid place-items-center my-10">
         <Stat />
       </div>
+      <CarouselShowCase />
       <div className="grid place-items-center p-10">
         <h2 className="font-extrabold text-6xl py-6">
           <TextGradient>
@@ -56,16 +61,7 @@ const Home: React.FC = () => {
             </div>
           </TextGradient>
         </h2>
-        {data && data.products && (
-          <ul className="grid grid-cols-4 gap-2">
-            {data.products.map((product: ProductType) => (
-              <Product
-                key={product.id}
-                product={product}
-              />
-            ))}
-          </ul>
-        )}
+        <TrendingProducts />
       </div>
     </div>
   );
