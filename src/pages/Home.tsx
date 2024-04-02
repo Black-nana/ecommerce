@@ -2,13 +2,15 @@ import React from 'react';
 import Stat from '../components/Stat';
 import Hero from './Hero';
 import DataQuery from '../tanstackQuery/DataQuery';
-import Product from '../components/Product';
+
 import TextGradient from '../components/TextGradient';
 import bars from '../assets/bar-1.svg';
 import Loading from '../components/Loading';
 import Badge from '../components/Badge';
 import CarouselShowCase from '../components/CarouselShowCase';
 import TrendingProducts from '../components/TrendingProducts';
+import Jewelry from '../components/Jewelery';
+
 
 // Define the interface for product data
 interface ProductType {
@@ -20,7 +22,7 @@ interface ProductType {
 }
 
 const Home: React.FC = () => {
-  const { data, error, isLoading } = DataQuery();
+  const {  error, isLoading } = DataQuery();
   // console.log(data?.products);
 
   if (isLoading) {
@@ -36,13 +38,14 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full grid place-items-center">
       <Hero />
       <Badge />
       <div className="grid place-items-center my-10">
         <Stat />
       </div>
       <CarouselShowCase />
+      <Jewelry />
       <div className="grid place-items-center p-10">
         <h2 className="font-extrabold text-6xl py-6">
           <TextGradient>
@@ -63,6 +66,7 @@ const Home: React.FC = () => {
         </h2>
         <TrendingProducts />
       </div>
+      
     </div>
   );
 };

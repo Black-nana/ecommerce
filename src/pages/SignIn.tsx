@@ -37,6 +37,9 @@ const SignIn = () => {
       };
       const loginSuccess = await login(userData);
       setIsLoading(false);
+      console.log('loginSuccess', loginSuccess);
+      console.log('loginSuccess', userData);
+      
 
       if (loginSuccess) {
         toast.success('Login successful!');

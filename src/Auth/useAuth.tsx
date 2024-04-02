@@ -35,7 +35,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const response = await axios.post<User>('https://fakestoreapi.com/auth/login', userData);
       const responseUser = response.data;
-      console.table(response)
 
       // If the login was successful, store the user's information in local storage
       if (responseUser) {

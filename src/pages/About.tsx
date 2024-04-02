@@ -63,7 +63,7 @@ const About = () => {
       <section className="flex flex-col w-4/5 md:w-8/12 md:text-center">
         <p>
           <h1> Our Story</h1>
-          [Your Ecommerce Website Name] was founded by a team of dedicated
+          Black Nana was founded by a team of dedicated
           individuals who shared a common goal: to create an online marketplace
           that caters to the diverse needs of our customers. With years of
           experience in the eCommerce industry, we set out to build a platform

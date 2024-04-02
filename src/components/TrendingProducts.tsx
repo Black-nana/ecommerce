@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import DataQuery from '../tanstackQuery/DataQuery'
 import Loading from './Loading';
 import Product from './Product';

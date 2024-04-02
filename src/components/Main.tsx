@@ -19,6 +19,7 @@ import Wishlist from './WishList';
 import Contact from '../pages/Contact';
 import { CheckOut } from '../pages/CheckOut';
 import OrderHistory from '../pages/OrderHistory';
+import Shop from '../pages/shop';
 
 const queryClient = new QueryClient();
 const Main = () => {
@@ -46,6 +47,10 @@ const Main = () => {
           <Route
             path="/about"
             element={<About />}
+          />
+          <Route
+            path="/shop"
+            element={<Shop />}
           />
           <Route
             path="/contact"

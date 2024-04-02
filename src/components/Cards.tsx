@@ -20,7 +20,7 @@ const Cards = () => {
         </figure>
         <div className="card-body">
             <h2 className="">{card1?.title}</h2>
-            <Link to={`/product/${card2?.id}`}>
+            <Link to={`/product/${card1?.id}`}>
             <div className="card-actions justify-end">
                 <button className="rounded bg-blue-300 p-2">Buy Now</button>
             </div>
