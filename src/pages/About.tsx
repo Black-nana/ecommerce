@@ -1,5 +1,5 @@
 // import React from "react";
-import { Link } from 'react-router-dom';
+
 import TextGradient from '../components/TextGradient';
 import bars from '../assets/bar-1.svg';
 import Table from '../components/Table';

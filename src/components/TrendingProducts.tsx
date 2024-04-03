@@ -2,6 +2,8 @@ import React from 'react'
 import DataQuery from '../tanstackQuery/DataQuery'
 import Loading from './Loading';
 import Product from './Product';
+import TextGradient from './TextGradient';
+import bars from '../assets/bar-1.svg'
 
 
 interface ProductType {
@@ -26,9 +28,26 @@ const TrendingProducts:React.FC = () => {
         return <div className="flex justify-center items-center h-screen">Error: {error.message}</div>;
       }
   return (
-    <div>
+    <div className='grid place-items-center'>
+        <h2 className="font-extrabold text-6xl py-6">
+          <TextGradient>
+            Trending Products
+            <div>
+              <img
+                alt="bar"
+                loading="lazy"
+                width="500"
+                height="50"
+                decoding="async"
+                data-nimg="1"
+                className="mt-6"
+                src={bars}
+              />
+            </div>
+          </TextGradient>
+        </h2>
         {data && data.products && (
-          <ul className="grid grid-cols-4 gap-2">
+          <ul className="grid lg:grid-cols-4 md:grid-cols-2 sm grid-cols-1 gap-2">
             {products.map((product: ProductType) => (
               <Product
                 key={product.id}

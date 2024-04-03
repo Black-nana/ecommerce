@@ -3,8 +3,6 @@ import Stat from '../components/Stat';
 import Hero from './Hero';
 import DataQuery from '../tanstackQuery/DataQuery';
 
-import TextGradient from '../components/TextGradient';
-import bars from '../assets/bar-1.svg';
 import Loading from '../components/Loading';
 import Badge from '../components/Badge';
 import CarouselShowCase from '../components/CarouselShowCase';
@@ -41,23 +39,7 @@ const Home: React.FC = () => {
       <CarouselShowCase />
       <Jewelry />
       <div className="grid place-items-center p-10">
-        <h2 className="font-extrabold text-6xl py-6">
-          <TextGradient>
-            Trending Products
-            <div>
-              <img
-                alt="bar"
-                loading="lazy"
-                width="500"
-                height="50"
-                decoding="async"
-                data-nimg="1"
-                className="mt-6"
-                src={bars}
-              />
-            </div>
-          </TextGradient>
-        </h2>
+      
         <TrendingProducts />
       </div>
       
