@@ -12,14 +12,8 @@ import TrendingProducts from '../components/TrendingProducts';
 import Jewelry from '../components/Jewelery';
 
 
-// Define the interface for product data
-interface ProductType {
-  id: number;
-  title: string;
-  image: string;
-  price: string;
-  // Add more properties as needed
-}
+
+
 
 const Home: React.FC = () => {
   const {  error, isLoading } = DataQuery();
