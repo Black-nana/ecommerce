@@ -118,7 +118,7 @@ const UserProfile: React.FC = () => {
       </TextGradient>
       <div className="border-t-3 border-blue-950 w-full h-2"></div>
       <div className="w-full flex flex-col justify-center items-center gap-10">
-        <div className="grid grid-cols-4 gap-4 ">
+        <div className="w-full grid lg:grid-cols-4 gap-4 px-2">
           <div className="flex flex-col">
             <label htmlFor="username">Username</label>
             <input

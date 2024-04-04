@@ -15,7 +15,7 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product }) => {
   return (
-    <li className='w-full shadow-lg border-2 rounded-lg grid place-items-center p-8 cursor-default hover:scale-105 transition-all duration-200'>
+    <li className='w-full shadow-lg border-2 rounded-lg grid lg:place-items-center p-8 cursor-default hover:scale-105 transition-all duration-200'>
       <Link to={`/product/${product.id}`}>
         <img src={product.image} alt={product.title} className='h-20 w-20'/>
         <div className='text-left'>

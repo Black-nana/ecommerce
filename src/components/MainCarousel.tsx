@@ -47,15 +47,15 @@ const MainCarousel = () => {
           ) => (
             <div
               key={index}
-              className=" bg-slate-50 p-4 w-full grid items-center gap-10 grid-cols-2 flex-shrink-0">
+              className=" bg-slate-50 p-4 w-full grid md:place-content-center gap-10 lg:grid-cols-2 flex-shrink-0">
               <div className="flex flex-col gap-10 items-center">
                 <div className="text-center font-sans font-bold text-2xl text-slate-600">
                   {item.title}
                 </div>
                 <div>
                   <Link to={`/product/${item.id}`}>
-                    <button className="btn py-2 px-4 border-2 bg-transparent hover:bg-blue-500 transition-all duration-300">
-                      Learn More
+                    <button className="btn text-white py-2 px-4 bg-[#716acd] hover:bg-[#8d98d9]  transition-allhover:text-white transition-all duration-300">
+                      Buy Me
                     </button>
                   </Link>
                 </div>

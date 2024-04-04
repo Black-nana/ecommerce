@@ -16,7 +16,7 @@ const OrderHistory: React.FC = () => {
   if (!orderHistory) {
     return<div className="flex justify-center items-center h-screen">
     <Loading />
-  </div>; // Add loading state or handle other cases
+  </div>; 
   }
 
   const handleClearHistory = () => {
@@ -82,7 +82,7 @@ const OrderHistory: React.FC = () => {
       ))}
       <button
         onClick={handleClearHistory}
-        className="btn btn-primary w-full">
+        className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all w-full">
         Clear History
       </button>
       <ToastContainer />

@@ -9,7 +9,7 @@ const Cards = () => {
     const card2 = products?.[15];
 
   return (
-    <div className='flex gap-4'>
+    <div className='flex max-sm:flex-col md:flex lg:flex gap-4'>
       <div className="card card-compact h-fit border-2 bg-base-100 shadow-xl p-2">
         <figure>
           <img
@@ -22,12 +22,12 @@ const Cards = () => {
             <h2 className="">{card1?.title}</h2>
             <Link to={`/product/${card1?.id}`}>
             <div className="card-actions justify-end">
-                <button className="rounded bg-blue-300 p-2">Buy Now</button>
+                <button className="rounded bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all text-white p-2">Buy Now</button>
             </div>
             </Link>
         </div>
       </div>
-      <div className="card card-compact bg-base-100 shadow-xl border-2 w-full  p-2">
+      <div className="card card-compact bg-base-100 shadow-xl border-2 w-full lg:hidden  p-2">
         <figure>
           <img
             src={card2?.image}
@@ -39,7 +39,7 @@ const Cards = () => {
             <h2 className="">{card2?.title}</h2>
             <Link to={`/product/${card2?.id}`}>
             <div className="card-actions justify-end">
-                <button className="rounded bg-blue-300 p-2">Buy Now</button>
+                <button className="rounded bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all text-white p-2">Buy Now</button>
             </div>
             </Link>
         </div>

@@ -6,7 +6,7 @@ import { MdLocalGroceryStore } from 'react-icons/md';
 
 const Badge = () => {
   return (
-    <div className="w-full flex justify-evenly bg-slate-700 p-4">
+    <div className="w-full grid gap-4 md:grid-cols-2 lg:grid-cols-4 grid-cols-2 place-items-center bg-slate-700 p-4">
       <div className="w-full flex gap-4 items-center">
         <div>
           <FaShippingFast className="text-6xl text-amber-700 p-2 border-2 border-blue-500 rounded-full" />

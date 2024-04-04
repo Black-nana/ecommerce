@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,7 +33,7 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
 };
 
   return (
-    <>
+    <div className='py-20'>
       <div className="isolate px-6 lg:px-8">
         <Formik
           initialValues={{
@@ -155,7 +155,7 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
             <div className="mt-10">
               <button
                 type="submit"
-                className="block w-full rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="block w-full rounded-md bg-[#716acd] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#8d98d9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8d98d9]"
               >
                 Let's talk
               </button>
@@ -164,7 +164,7 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
         </Formik>
         <ToastContainer />
       </div>
-    </>
+    </div>
   );
 };
 

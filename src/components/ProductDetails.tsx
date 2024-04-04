@@ -86,7 +86,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
   return (
     <div className="w-full grid place-items-center">
       <ToastContainer /> {/* Initialize the ToastContainer component */}
-      <div className="w-5/6 grid place-items-center grid-cols-2 p-10 mx-10 ">
+      <div className="w-5/6 grid place-items-center lg:grid-cols-2 p-10 mx-10 ">
         <div>
           <img src={data?.image} alt={data?.title} className="h-80 full" />
         </div>
@@ -108,7 +108,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
           </div>
           <button
             onClick={handleAddToCart} // Use handleAddToCart function
-            className="btn bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-md mr-2"
+            className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all text-white px-4 py-2 rounded-md mr-2"
           >
             <FontAwesomeIcon icon={faShoppingCart} className="mr-2" /> Add to
             Cart

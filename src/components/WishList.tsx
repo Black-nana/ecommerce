@@ -48,7 +48,7 @@ const Wishlist: React.FC = () => {
         Cell: ({ value }: { value: number }) => (
           <button
             onClick={() => handleRemoveFromWishlist(value)}
-            className="w-fit flex gap-4 items-center bg-red-400 rounded-md p-2 text-red-900 font-bold hover:bg-red-500  mx-auto">
+            className="w-fit flex gap-4 items-center  rounded-md p-2 text-[#060e12] font-bold mx-auto bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
             <FontAwesomeIcon
               icon={faHeartBroken}
               className="text-red-900"
@@ -93,7 +93,7 @@ const Wishlist: React.FC = () => {
               {headerGroups.map((headerGroup) => (
                 <tr
                   {...headerGroup.getHeaderGroupProps()}
-                  className="border-t-2 border-b-2 bg-green-400">
+                  className="border-t-2 border-b-2 bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
@@ -128,7 +128,7 @@ const Wishlist: React.FC = () => {
         ) : (
           <div className="grid place-items-center h-64">
             <Link to={'/signin'}>
-              <button className="btn bg-red-400 text-white font-bold text-xl py-2 px-4 rounded-lg">
+              <button className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all text-white font-bold text-xl py-2 px-4 rounded-lg">
                 Please Log in
               </button>
             </Link>

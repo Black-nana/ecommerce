@@ -4,7 +4,7 @@ import banner from '../assets/main banner 3.jpg'
 const Hero = () => {
   return (
     <div
-  className="w-full hero min-h-96 text-white "
+  className="w-full pt-0 hero min-h-96 text-white bg-cover bg-center bg-no-repeat relative"
   style={{ backgroundImage: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',}}
 >
   <div className="hero-overlay bg-opacity-15"></div>
@@ -16,7 +16,7 @@ const Hero = () => {
           excepturi exercitationem quasi. In deleniti eaque aut repudiandae
           et a id nisi.
         </p>
-        <Link to="/shop" className="btn btn-wide bg-blue-600 hover:bg-blue-500 text-white">Shop Now</Link>
+        <Link to="/shop" className="btn btn-wide bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all text-white">Shop Now</Link>
       </div>
   </div>
 </div>

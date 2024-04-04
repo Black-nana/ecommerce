@@ -49,7 +49,7 @@ const UserSection = () => { // Renamed component to UserSection
               <span className="text-info">Subtotal: ‎ {subtotal}</span>
               <Link to={'/cart'}>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">View cart</button>
+                  <button className="btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all btn-block">View cart</button>
                 </div>
               </Link>
             </div>

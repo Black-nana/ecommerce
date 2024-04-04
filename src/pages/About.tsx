@@ -6,7 +6,7 @@ import Table from '../components/Table';
 
 const About = () => {
   return (
-    <div className="grid place-items-center mb-10">
+    <div className="grid place-items-center py-20">
       <TextGradient>
         <div className="grid place-items-center">
           <h1>About Us</h1>

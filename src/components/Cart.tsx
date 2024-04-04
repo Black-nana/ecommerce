@@ -69,7 +69,7 @@ const Cart: React.FC = () => {
   };
 
   return (
-    <div className="w-full grid place-items-center">
+    <div className="w-full grid place-items-center py-20">
       <ToastContainer />
       <div className="grid place-items-center my-4">
         <TextGradient>
@@ -91,13 +91,14 @@ const Cart: React.FC = () => {
         </TextGradient>
       </div>
       {user ? (
-        <div className="w-full my-10 mx-10 px-10 grid grid-cols-[2fr,1fr] place-items-center">
+        <div className="w-full my-10 mx-10 px-10 grid lg:grid-cols-[2fr,1fr] place-items-center">
           <div className="w-full p-8">
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col gap-4">
-                <div className="grid grid-cols-5 gap-4 items-center">
+                className="flex flex-col gap-4 ">
+                  <div className="w-full border-b-4 my-4"></div>
+                <div className="grid lg:grid-cols-5 gap-4 items-center">
                   <div>
                     <img
                       src={item.image || '/path/to/placeholder.jpg'}
@@ -140,7 +141,7 @@ const Cart: React.FC = () => {
             <div>
               <button
                 onClick={handleClearCart}
-                className="btn btn-primary">
+                className="btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
                 Clear Cart
               </button>
             </div>
@@ -169,7 +170,7 @@ const Cart: React.FC = () => {
             <div className="w-full">
               <Link to={'/checkout'}>
                 <button
-                  className="btn btn-primary w-full"
+                  className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all tex-white w-full"
                   onClick={handleAddToHistory}>
                   Proceed to Checkout
                 </button>

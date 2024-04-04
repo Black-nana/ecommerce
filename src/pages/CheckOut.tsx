@@ -1,8 +1,8 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 export const CheckOut = () => {
   return (
-    <div className='my-10'>
+    <div className='mp-20'>
       
       <div className="thankyou-content text-center text-accent-content px-10 max-w-7xl mx-auto">
         <h2 className="text-6xl max-sm:text-4xl">

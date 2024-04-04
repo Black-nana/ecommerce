@@ -54,21 +54,21 @@ const Signup = () => {
   });
 
   return (
-    <div className="my-8">
+    <div className="py-20">
       <ToastContainer />
-      <div className="h-fit w-full grid place-items-center ">
-        <div className="w-4/12 grid py-4 px-2 h-fit border-2 shadow-2xl ">
+      <div className=" w-full grid place-items-center ">
+        <div className="lg:w-4/12 max-md:w-full max-sm:w-full grid p-2 h-fit border-2 shadow-2xl ">
           <div className="flex justify-end">
-            <span className="text-slate-900 cursor-pointer my-2">
+            <span className="text-[#716acd] cursor-pointer my-2">
               <Link to={"/"}>
                 <IoMdCloseCircle className="text-3xl" />
               </Link>
             </span>
           </div>
-          <div className="bg-green-400 py-4 w-full flex cursor-pointer items-center justify-center gap-2 text-white">
+          <div className="bg-[#716acd] py-4 w-full flex cursor-pointer items-center justify-center gap-2 text-white">
             <h2 className="text-4xl font-bold tracking-tight ">Create Account</h2>
             <span>
-              <TbLockAccessOff className="text-5xl text-gray-600" />
+              <TbLockAccessOff className="text-5xl text-gray-600  hover:text-white transition-all duration-300" />
             </span>
           </div>
           <form
@@ -128,12 +128,12 @@ const Signup = () => {
             </div>
             <button
               type="submit"
-              className="transition-all duration-200 bg-green-400 btn w-full my-2"
+              className="transition-all duration-200 bg-[#716acd] btn w-full my-4 hover:bg-[#8d98d9] text-white font-bold"
               disabled={!formik.isValid || isLoading}
             >
               {isLoading ? (
                 <div className="">
-                  <span className="loading loading-dots loading-lg text-green-500"></span>
+                  <span className="loading loading-dots loading-lg text-[#716acd]"></span>
                 </div>
               ) : (
                 "Sign up"
@@ -143,7 +143,7 @@ const Signup = () => {
           <Link to={'/signin'} className="w-full text-center capitalize  text-sm text-gray-500 font-mono cursor-pointer">
             <h3>
              I have an account?
-              <span className=" uppercase border-b-2 border-t-2 border-green-600 cursor-pointer">
+              <span className=" uppercase border-b-2 border-t-2 border-[#716acd] cursor-pointer">
                 LogIn
               </span>
             </h3>
