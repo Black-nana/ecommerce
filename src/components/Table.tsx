@@ -1,4 +1,5 @@
-
+import mateen from '../assets/membersImages/mateen.jpeg'
+import richard from '../assets/membersImages/richard.jpeg'
 
 const Table = () => {
   return (
@@ -31,21 +32,18 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={mateen} alt="Mateen" />
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
+              <div className="font-bold">Abdul Mateen Kofi Yeboah</div>
             </div>
           </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+          5211040236
         </td>
-        <td>Purple</td>
+        <td>Male</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
@@ -65,17 +63,15 @@ const Table = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Brice Swyre</div>
-              <div className="text-sm opacity-50">China</div>
+              <div className="font-bold">Amponsah Danquah Senior</div>
+              
             </div>
           </div>
         </td>
         <td>
-          Carroll Group
-          <br/>
-          <span className="badge badge-ghost badge-sm">Tax Accountant</span>
+          5211040239
         </td>
-        <td>Red</td>
+        <td>Male</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
@@ -95,17 +91,15 @@ const Table = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Marjy Ferencz</div>
-              <div className="text-sm opacity-50">Russia</div>
+              <div className="font-bold">Amponsah Danquah Junior</div>
+              
             </div>
           </div>
         </td>
         <td>
-          Rowe-Schoen
-          <br/>
-          <span className="badge badge-ghost badge-sm">Office Assistant I</span>
+          5211040240
         </td>
-        <td>Crimson</td>
+        <td>Male</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
@@ -125,17 +119,99 @@ const Table = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Yancy Tear</div>
-              <div className="text-sm opacity-50">Brazil</div>
+              <div className="font-bold">Kessie Patrick Atta</div>
+              
             </div>
           </div>
         </td>
         <td>
-          Wyman-Ledner
-          <br/>
-          <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
+          5211040233
         </td>
-        <td>Indigo</td>
+        <td>Male</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+      {/* row 5 */}
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Mensah Evans</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+          5211040232
+        </td>
+        <td>Male</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+      {/* row 6 */}
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Boadu Kinsford</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+          5211040234
+        </td>
+        <td>Male</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+      {/* row 7 */}
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={richard}alt="Richard" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Richard Osei</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+          5211040235
+        </td>
+        <td>Male</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
