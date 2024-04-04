@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { TbLockAccess } from 'react-icons/tb';
@@ -51,6 +51,9 @@ const SignIn = () => {
       }
     },
   });
+  useEffect(() => {
+    formik.handleSubmit();
+  }, []);
 
   return (
     <div className="py-20">
