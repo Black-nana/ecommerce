@@ -1,5 +1,11 @@
 import mateen from '../assets/membersImages/mateen.jpeg'
 import richard from '../assets/membersImages/richard.jpeg'
+import evans from '../assets/membersImages/evans.jpeg'
+import kessie from '../assets/membersImages/kessie.jpeg'
+import senior from '../assets/membersImages/senior.jpeg'
+import junior from '../assets/membersImages/Junior.jpeg'
+import ama from '../assets/membersImages/ama.jpeg'
+import andrew from '../assets/membersImages/andrew.jpeg'
 
 const Table = () => {
   return (
@@ -32,7 +38,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src={mateen} alt="Mateen" />
+                <img src={mateen} alt="Avatar" />
               </div>
             </div>
             <div>
@@ -59,7 +65,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={senior} alt="Avatar" />
               </div>
             </div>
             <div>
@@ -87,7 +93,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={junior} alt="Avatar" />
               </div>
             </div>
             <div>
@@ -115,7 +121,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={kessie} alt="Avatar" />
               </div>
             </div>
             <div>
@@ -143,7 +149,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={evans} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
             <div>
@@ -171,7 +177,7 @@ const Table = () => {
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar" />
               </div>
             </div>
             <div>
@@ -210,6 +216,90 @@ const Table = () => {
         </td>
         <td>
           5211040235
+        </td>
+        <td>Male</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+       {/* row 8 */}
+       <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={ama}alt="Avator" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Gyamfuo Amoni</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+        5211040231
+        </td>
+        <td>Female</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+       {/* row 9 */}
+       <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src='' alt="Avator" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold ">Aidoo Addison Joseph</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+        5211040237
+        </td>
+        <td>Male</td>
+        <th>
+          <button className="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+      {/* row 10 */}
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" className="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={andrew} alt="Avator" />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold ">Fosu Konadu Andrews</div>
+              
+            </div>
+          </div>
+        </td>
+        <td>
+        5211040238
         </td>
         <td>Male</td>
         <th>

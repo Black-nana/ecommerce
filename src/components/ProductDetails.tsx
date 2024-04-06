@@ -84,7 +84,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
   }
 
   return (
-    <div className="w-full grid place-items-center">
+    <div className="w-full grid place-items-center py-20">
       <ToastContainer /> {/* Initialize the ToastContainer component */}
       <div className="w-5/6 grid place-items-center lg:grid-cols-2 p-10 mx-10 ">
         <div>

@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import UserSection from './UseSection';
 import { useAuth } from '../Auth/useAuth'; // Import the useAuth hook from AuthProvider
-
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
   const { user } = useAuth(); // Get the user 
@@ -70,8 +70,8 @@ const Navbar = () => {
         </div>
         <Link
           to={'/'}
-          className="btn btn-ghost text-xl">
-          BlackNana
+          className="btn btn-ghost text-xl grid place-items-center">
+          <img src={logo} alt="Logo" className=' h-10 w-20'/>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
