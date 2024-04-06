@@ -13,21 +13,23 @@ const OrderHistory: React.FC = () => {
   const { orderHistory } = useSelector((state: RootState) => state.history);
   console.log('orderHistory', orderHistory);
 
-  if (!orderHistory) {
-    return<div className="flex justify-center items-center h-screen">
-    <Loading />
-  </div>; 
-  }
-
   const handleClearHistory = () => {
     dispatch(clearHistory());
     toast.error('Order history cleared');
   };
 
+  if (!orderHistory || orderHistory.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div>No order history available</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className='grid place-items-center my-4'>
-      <TextGradient>
+        <TextGradient>
           <div className="grid place-items-center">
             <p>Order History</p>
             <div>
@@ -62,11 +64,11 @@ const OrderHistory: React.FC = () => {
               <div className='flex flex-col'>
                 <span className='p-2'>Order</span>
                 <span className='p-2'> {index + 1}</span>
-                </div>
+              </div>
               <div className="flex flex-col font-sans">
                 <span className='p-2'>Date</span>
                 <span className='p-2'> {order?.date}</span>
-                </div>
+              </div>
               <div className="flex flex-col font-sans">
                 <span className='p-2'>Quantity</span>
                 <span className='p-2'> {order?.quantity}</span>

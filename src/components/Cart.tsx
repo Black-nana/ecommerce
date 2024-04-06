@@ -9,9 +9,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { addToOrderHistory } from '../appRedux/slice/history/historySlice'; // Import addToOrderHistory action creator
+import { addToOrderHistory } from '../appRedux/slice/history/historySlice';
 import { clearCart } from '../appRedux/slice/cart/cartSlice';
-import { RootState } from '../appRedux/slice/rootReducer'; // Import RootState type
+import { RootState } from '../appRedux/slice/rootReducer';
 import moment from 'moment';
 
 const Cart: React.FC = () => {
@@ -24,26 +24,6 @@ const Cart: React.FC = () => {
 
   const { cartItems } = useSelector((state: RootState) => state.cart);
   console.log('cartItems', cartItems);
-
-  // Calculate subtotal, shipping cost, tax, and total
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const shippingCost = 10; // Adjust as needed
-  const taxRate = 0.15; // 15%
-  const tax = subtotal * taxRate;
-  const total = subtotal + shippingCost + tax;
-  const totalQuantity = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
-
-  // Convert numbers to fixed(2) format
-  const subtotalFixed = subtotal.toFixed(2);
-  const shippingCostFixed = shippingCost.toFixed(2);
-  const taxFixed = tax.toFixed(2);
-  const totalFixed = total.toFixed(2);
 
   const handleRemoveFromCart = (itemId: number) => {
     dispatch(removeFromCart(itemId));
@@ -59,7 +39,7 @@ const Cart: React.FC = () => {
     const orderId = generateOrderId();
     const order = {
       id: orderId,
-      total: parseFloat(totalFixed), // Convert totalFixed to a number
+      total: parseFloat(totalFixed),
       quantity: totalQuantity,
       date: moment().format('MMMM Do YYYY, h:mm:ss a'),
     };
@@ -67,6 +47,26 @@ const Cart: React.FC = () => {
     console.log('order', order);
     dispatch(clearCart());
   };
+
+  // Calculate subtotal, shipping cost, tax, and total
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const shippingCost = 10;
+  const taxRate = 0.15;
+  const tax = subtotal * taxRate;
+  const total = subtotal + shippingCost + tax;
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  // Convert numbers to fixed(2) format
+  const subtotalFixed = subtotal.toFixed(2);
+  const shippingCostFixed = shippingCost.toFixed(2);
+  const taxFixed = tax.toFixed(2);
+  const totalFixed = total.toFixed(2);
 
   return (
     <div className="w-full grid place-items-center py-20">
@@ -93,58 +93,62 @@ const Cart: React.FC = () => {
       {user ? (
         <div className="w-full my-10 mx-10 px-10 grid lg:grid-cols-[2fr,1fr] place-items-center">
           <div className="w-full p-8">
-            {cartItems.map((item) => (
-              <div
-                key={item.id}
-                className="flex flex-col gap-4 ">
-                  <div className="w-full border-b-4 my-4"></div>
-                <div className="grid lg:grid-cols-5 gap-4 items-center">
-                  <div>
-                    <img
-                      src={item.image || '/path/to/placeholder.jpg'}
-                      alt={item.title}
-                      width="100"
-                    />
+            {cartItems.length === 0 ? (
+              <p className="text-center text-gray-600">There are no items in your cart.</p>
+            ) : (
+              <>
+                {cartItems.map((item) => (
+                  <div key={item.id} className="flex flex-col gap-4">
+                    <div className="w-full border-b-4 my-4"></div>
+                    <div className="grid lg:grid-cols-5 gap-4 items-center">
+                      <div>
+                        <img
+                          src={item.image || '/path/to/placeholder.jpg'}
+                          alt={item.title}
+                          width="100"
+                        />
+                      </div>
+                      <div>
+                        <p className="flex flex-col">
+                          <span className="text-sm font-light">{item.title}</span>
+                          <span>
+                            {' '}
+                            Rate:
+                            <span>{item.rating.rate}</span>
+                          </span>
+                        </p>
+                      </div>
+                      <div>
+                        <p>Quantity</p>
+                        <div>{item.quantity}</div>
+                      </div>
+                      <div>
+                        <span className="text-orange-400">GH₵ {item.price}</span>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => handleRemoveFromCart(item.id)}
+                          className="p-2 bg-red-400 text-white rounded-lg">
+                          <FontAwesomeIcon
+                            icon={faHeartBroken}
+                            className="text-red-900"
+                          />
+                          <span>Remove</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="w-full border-b-4 my-4"></div>
                   </div>
-                  <div>
-                    <p className="flex flex-col">
-                      <span className="text-sm font-light">{item.title}</span>
-                      <span>
-                        {' '}
-                        Rate:
-                        <span>{item.rating.rate}</span>
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <p>Quantity</p>
-                    <div>{item.quantity}</div>
-                  </div>
-                  <div>
-                    <span className="text-orange-400">GH₵ {item.price}</span>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => handleRemoveFromCart(item.id)}
-                      className="p-2 bg-red-400 text-white rounded-lg">
-                      <FontAwesomeIcon
-                        icon={faHeartBroken}
-                        className="text-red-900"
-                      />
-                      <span>Remove</span>
-                    </button>
-                  </div>
+                ))}
+                <div>
+                  <button
+                    onClick={handleClearCart}
+                    className="btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
+                    Clear Cart
+                  </button>
                 </div>
-                <div className="w-full border-b-4 my-4"></div>
-              </div>
-            ))}
-            <div>
-              <button
-                onClick={handleClearCart}
-                className="btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
-                Clear Cart
-              </button>
-            </div>
+              </>
+            )}
           </div>
           <div className="w-full grid place-items-center gap-10 ">
             <div className="w-full bg-slate-700 p-8 text-white font-sans rounded-lg">

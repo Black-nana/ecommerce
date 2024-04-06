@@ -26,11 +26,8 @@ const Wishlist: React.FC = () => {
     dispatch(removeFromWishlist(itemId));
     toast.error('Item removed from wishlist');
   };
-  console.log('wishlist:', wishlist);
 
   const data = React.useMemo(() => wishlist, [wishlist]);
-
-  console.log('data from wishlist in wishlist', data);
 
   const columns = React.useMemo<Column<Item>[]>(
     () => [
@@ -86,45 +83,51 @@ const Wishlist: React.FC = () => {
       </TextGradient>
       <div className="w-full grid place-items-center">
         {user ? (
-          <table
-            {...getTableProps()}
-            className="w-full ">
-            <thead>
-              {headerGroups.map((headerGroup) => (
-                <tr
-                  {...headerGroup.getHeaderGroupProps()}
-                  className="border-t-2 border-b-2 bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
-                  {headerGroup.headers.map((column) => (
-                    <th
-                      {...column.getHeaderProps()}
-                      className="">
-                      {column.render('Header')}
-                    </th>
+          <>
+            {wishlist.length === 0 ? (
+              <p className="text-center text-gray-600">There are no items in your wishlist.</p>
+            ) : (
+              <table
+                {...getTableProps()}
+                className="w-full ">
+                <thead>
+                  {headerGroups.map((headerGroup) => (
+                    <tr
+                      {...headerGroup.getHeaderGroupProps()}
+                      className="border-t-2 border-b-2 bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
+                      {headerGroup.headers.map((column) => (
+                        <th
+                          {...column.getHeaderProps()}
+                          className="">
+                          {column.render('Header')}
+                        </th>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody
-              {...getTableBodyProps()}
-              className="w-full">
-              {rows.map((row) => {
-                prepareRow(row);
-                return (
-                  <tr
-                    {...row.getRowProps()}
-                    className="">
-                    {row.cells.map((cell) => (
-                      <td
-                        {...cell.getCellProps()}
-                        className="text-center p-4 bg-slate-50">
-                        {cell.render('Cell')}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                </thead>
+                <tbody
+                  {...getTableBodyProps()}
+                  className="w-full">
+                  {rows.map((row) => {
+                    prepareRow(row);
+                    return (
+                      <tr
+                        {...row.getRowProps()}
+                        className="">
+                        {row.cells.map((cell) => (
+                          <td
+                            {...cell.getCellProps()}
+                            className="text-center p-4 bg-slate-50">
+                            {cell.render('Cell')}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
+          </>
         ) : (
           <div className="grid place-items-center h-64">
             <Link to={'/signin'}>
