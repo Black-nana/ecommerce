@@ -4,7 +4,7 @@ import banner from '../assets/main banner 3.jpg'
 const Hero = () => {
   return (
     <div
-  className="w-full pt-0 hero min-h-96 text-white bg-cover bg-center bg-no-repeat relative"
+  className="w-full py-20 hero min-h-96 text-white bg-cover bg-center bg-no-repeat relative"
   style={{ backgroundImage: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',}}
 >
   <div className="hero-overlay bg-opacity-15"></div>

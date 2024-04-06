@@ -30,7 +30,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="w-full grid place-items-center">
+    <div className="w-full grid place-items-center overflow-x-hidden">
       <Hero />
       <Badge />
       <div className="grid place-items-center my-10">
