@@ -12,7 +12,7 @@ const Badge = () => {
           <FaShippingFast className="text-6xl text-amber-700 p-2 border-2 border-blue-500 rounded-full" />
         </div>
         <div>
-          <p className="text-white font-sans font-semibold text-2xl">
+          <p className="text-white font-sans font-semibold text-2xl max-sm:text-xl">
             Shipping
           </p>
           <p className="text-slate-300">Free delivery over Gh100</p>
@@ -23,7 +23,7 @@ const Badge = () => {
           <GiReturnArrow className="text-6xl text-amber-700 p-2 border-2 border-blue-500 rounded-full" />
         </div>
         <div>
-          <p className="text-white font-sans font-semibold text-2xl">
+          <p className="text-white font-sans font-semibold text-2xl max-sm:text-xl">
             Free Returns
           </p>
           <p className="text-slate-300">Free Returns At No Cost</p>
@@ -34,7 +34,7 @@ const Badge = () => {
           <RiSecurePaymentLine className="text-6xl text-amber-700 p-2 border-2 border-blue-500 rounded-full" />
         </div>
         <div>
-          <p className="text-white font-sans font-semibold text-2xl">
+          <p className="text-white font-sans font-semibold text-2xl max-sm:text-xl">
             Secure Shopping
           </p>
           <p className="text-slate-300">Best security features</p>
@@ -45,7 +45,7 @@ const Badge = () => {
           <MdLocalGroceryStore className="text-6xl text-amber-700 p-2 border-2 border-blue-500 rounded-full" />
         </div>
         <div>
-          <p className="text-white font-sans font-semibold text-2xl">
+          <p className="text-white font-sans font-semibold text-2xl max-sm:text-xl">
             Unlimited Products
           </p>
           <p className="text-slate-300">providing best products</p>
