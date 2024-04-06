@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DataQuery from '../tanstackQuery/DataQuery';
 import { Link } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 interface Product {
     image: string | undefined;
@@ -37,7 +38,9 @@ function Shop() {
                 className='p-4 border-4 rounded-lg w-5/6 my-4 text-xl'
             />
             {/* Display filtered products */}
-            {isLoading && <div>Loading...</div>}
+            {isLoading &&   <div className="flex justify-center items-center h-screen">
+            <Loading />
+          </div>}
             {error && <div>Error: {error.message}</div>}
             {filteredProducts.length > 0 ? (
                 <div>
