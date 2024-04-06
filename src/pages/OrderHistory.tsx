@@ -6,7 +6,6 @@ import { clearHistory } from '../appRedux/slice/history/historySlice';
 import { useDispatch } from 'react-redux';
 import TextGradient from '../components/TextGradient';
 import bars from '../assets/bar-1.svg';
-import Loading from '../components/Loading';
 
 const OrderHistory: React.FC = () => {
   const dispatch = useDispatch();
