@@ -45,7 +45,7 @@ const Wishlist: React.FC = () => {
         Cell: ({ value }: { value: number }) => (
           <button
             onClick={() => handleRemoveFromWishlist(value)}
-            className="w-fit flex gap-4 items-center  rounded-md p-2 text-[#060e12] font-bold mx-auto bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
+            className="w-fit flex text-white gap-4 items-center  rounded-md p-2  font-bold mx-auto bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
             <FontAwesomeIcon
               icon={faHeartBroken}
               className="text-red-900"
@@ -94,7 +94,7 @@ const Wishlist: React.FC = () => {
                   {headerGroups.map((headerGroup) => (
                     <tr
                       {...headerGroup.getHeaderGroupProps()}
-                      className="border-t-2 border-b-2 bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
+                      className="border-t-2 text-white border-b-2 bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
                       {headerGroup.headers.map((column) => (
                         <th
                           {...column.getHeaderProps()}

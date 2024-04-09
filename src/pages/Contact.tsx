@@ -33,7 +33,7 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
 };
 
   return (
-    <div className='py-20'>
+    <div className='w-full grid place-items-center py-20'>
       <div className="isolate px-6 lg:px-8">
         <Formik
           initialValues={{
@@ -48,8 +48,8 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className=''>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          <Form className='w-full grid place-items-center'>
+            <div className="w-5/6 grid grid-cols place-items-center-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-semibold leading-6 text-accent-content">
                   First name
