@@ -4,9 +4,8 @@ import * as Yup from 'yup';
 import { TbLockAccess } from 'react-icons/tb';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../Auth/useAuth'; // Import the useAuth hook
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +56,10 @@ const SignIn = () => {
 
   return (
     <div className="py-20">
-      <ToastContainer />
+    <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className=" w-full grid place-items-center">
         <div className="lg:w-4/12 max-md:w-full max-sm:w-full grid p-4  border-2 shadow-2xl ">
           <div className="flex justify-end pb-10">

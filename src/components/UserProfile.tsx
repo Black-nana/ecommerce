@@ -5,9 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import TextGradient from './TextGradient';
 import bars from '../assets/bar-1.svg';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Loading from './Loading';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface User {
  id: string;
@@ -99,6 +98,10 @@ const UserProfile: React.FC = () => {
 
  return (
     <div className="grid place-items-center w-full mb-10">
+       <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <TextGradient>
         <div className="grid place-items-center">
           <h1>User Profile</h1>
@@ -239,7 +242,7 @@ const UserProfile: React.FC = () => {
           </button>
         </div>
       </div>
-      <ToastContainer />
+      
     </div>
  );
 };

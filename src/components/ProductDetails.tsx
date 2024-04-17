@@ -10,12 +10,14 @@ import Loading from './Loading';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../appRedux/slice/cart/cartSlice';
 import { addToWishlist } from '../appRedux/slice/whishlist/wishlistSlice'; // Import addToWishlist action creator
-import { toast, ToastContainer } from 'react-toastify'; // Import toast and ToastContainer from react-toastify package
-import 'react-toastify/dist/ReactToastify.css';
+
+import { useAuth } from '../Auth/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface ProductDetailsProps {}
 
 const ProductDetails: React.FC<ProductDetailsProps> = () => {
+  const {user} = useAuth();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = React.useState<number>(1);
   let { id } = useParams<{ id: string }>();
@@ -40,22 +42,28 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
   };
 
   const handleAddToCart = () => {
-    const newData = {
-      id: data?.id,
-      title: data?.title,
-      image: data?.image,
-      price: data?.price,
-      rating: data?.rating, // Add rating to the cart item
-      quantity, // Directly access the quantity state
-    };
-    dispatch(addToCart(newData));
-
-    // Trigger a toast notification
-    toast.success('Item added to cart');
+    if (user) {
+      const newData = {
+        id: data?.id,
+        title: data?.title,
+        image: data?.image,
+        price: data?.price,
+        rating: data?.rating, // Add rating to the cart item
+        quantity, // Directly access the quantity state
+      };
+      dispatch(addToCart(newData));
+  
+      // Trigger a toast notification
+      toast.success('Item added to cart');
+    }else{
+      toast.error('please log in')
+    }
+   
   };
 
   const handleAddToWishlist = ({}) => {
-    // Dispatch action to add to wishlist
+    if(user){
+      // Dispatch action to add to wishlist
     const newData = {
       id: data?.id,
       title: data?.title,
@@ -69,6 +77,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
 
     // Trigger a toast notification
     toast.success('Item added to wishlist');
+    }else{
+      toast.error("please log in")
+    }  
+    
   };
 
   if (isLoading) {
@@ -85,7 +97,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = () => {
 
   return (
     <div className="w-full grid place-items-center py-20">
-      <ToastContainer /> {/* Initialize the ToastContainer component */}
+     <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className="w-5/6 grid place-items-center lg:grid-cols-2 p-10 mx-10 ">
         <div>
           <img src={data?.image} alt={data?.title} className="h-80 full" />

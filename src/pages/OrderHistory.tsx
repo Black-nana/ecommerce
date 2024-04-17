@@ -1,11 +1,12 @@
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../appRedux/slice/rootReducer';
 import { clearHistory } from '../appRedux/slice/history/historySlice';
 import { useDispatch } from 'react-redux';
 import TextGradient from '../components/TextGradient';
 import bars from '../assets/bar-1.svg';
+import toast, { Toaster } from 'react-hot-toast';
 
 const OrderHistory: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ const OrderHistory: React.FC = () => {
   return (
     <div>
       <div className='grid place-items-center my-4'>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
         <TextGradient>
           <div className="grid place-items-center">
             <p>Order History</p>
@@ -83,10 +88,10 @@ const OrderHistory: React.FC = () => {
       ))}
       <button
         onClick={handleClearHistory}
-        className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all w-full">
+        className="btn bg-[#716acd] hover:bg-[#8d98d9] text-white duration-300 transition-all w-full">
         Clear History
       </button>
-      <ToastContainer />
+     
     </div>
   );
 };

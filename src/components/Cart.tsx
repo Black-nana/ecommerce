@@ -5,7 +5,7 @@ import bars from '../assets/bar-1.svg';
 import { removeFromCart } from '../appRedux/slice/cart/cartSlice';
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { toast, ToastContainer } from 'react-toastify';
+
 import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,6 +13,7 @@ import { addToOrderHistory } from '../appRedux/slice/history/historySlice';
 import { clearCart } from '../appRedux/slice/cart/cartSlice';
 import { RootState } from '../appRedux/slice/rootReducer';
 import moment from 'moment';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Cart: React.FC = () => {
   const { user } = useAuth();
@@ -53,7 +54,8 @@ const Cart: React.FC = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
-  const shippingCost = 10;
+  const shippingRate = 0.1;
+  const shippingCost = subtotal * shippingRate;
   const taxRate = 0.15;
   const tax = subtotal * taxRate;
   const total = subtotal + shippingCost + tax;
@@ -70,7 +72,10 @@ const Cart: React.FC = () => {
 
   return (
     <div className="w-full grid place-items-center py-20">
-      <ToastContainer />
+    <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className="grid place-items-center my-4">
         <TextGradient>
           <div className="grid place-items-center">
@@ -143,7 +148,7 @@ const Cart: React.FC = () => {
                 <div>
                   <button
                     onClick={handleClearCart}
-                    className="btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
+                    className="w-full btn text-white bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all">
                     Clear Cart
                   </button>
                 </div>
@@ -151,7 +156,7 @@ const Cart: React.FC = () => {
             )}
           </div>
           <div className="w-full grid place-items-center gap-10 ">
-            <div className="w-full bg-slate-700 p-8 text-white font-sans rounded-lg">
+            <div className="w-full bg-[#716acd] p-8 text-white font-sans rounded-lg">
               <h2 className="text-2xl font-bold">Order Summary</h2>
               <div className="w-full border-b-4 my-4"></div>
               <p className="font-bold grid grid-cols-2 text-sm font-sans">
@@ -174,7 +179,7 @@ const Cart: React.FC = () => {
             <div className="w-full">
               <Link to={'/checkout'}>
                 <button
-                  className="btn bg-[#716acd] hover:bg-[#8d98d9] duration-300 transition-all tex-white w-full"
+                  className="btn bg-[#716acd] hover:bg-[#8d98d9] text-white duration-300 transition-all tex-white w-full"
                   onClick={handleAddToHistory}>
                   Proceed to Checkout
                 </button>

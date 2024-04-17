@@ -3,10 +3,9 @@ import { TbLockAccessOff } from "react-icons/tb";
 import { Link,useNavigate } from "react-router-dom";
 import { IoMdCloseCircle } from "react-icons/io";
 import { useFormik } from "formik";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 import axios from 'axios';
+import toast, { Toaster } from "react-hot-toast";
 
 const Signup = () => {
   // const [successMessage, setSuccessMessage] = useState("");
@@ -55,7 +54,10 @@ const Signup = () => {
 
   return (
     <div className="py-20">
-      <ToastContainer />
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className=" w-full grid place-items-center ">
         <div className="lg:w-4/12 max-md:w-full max-sm:w-full grid p-2 h-fit border-2 shadow-2xl ">
           <div className="flex justify-end">

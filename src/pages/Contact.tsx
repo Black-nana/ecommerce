@@ -1,8 +1,7 @@
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('First name is required'),
@@ -34,6 +33,10 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
 
   return (
     <div className='w-full grid place-items-center py-20'>
+       <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className="isolate px-6 lg:px-8">
         <Formik
           initialValues={{
@@ -162,7 +165,7 @@ const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void
             </div>
           </Form>
         </Formik>
-        <ToastContainer />
+       
       </div>
     </div>
   );

@@ -10,7 +10,9 @@ interface ProductType {
     id: number;
     title: string;
     image: string;
-    price: string;
+    price: number;
+    quantity:number;
+    rating:number
     // Add more properties as needed
   }
 
@@ -47,11 +49,12 @@ const TrendingProducts:React.FC = () => {
           </TextGradient>
         </h2>
         {data && data.products && (
-          <ul className="grid lg:grid-cols-4 md:grid-cols-2 sm grid-cols-1 gap-2">
+          <ul className="grid lg:grid-cols-5 md:grid-cols-2 sm grid-cols-1 gap-6">
             {products.map((product: ProductType) => (
               <Product
                 key={product.id}
                 product={product}
+               
               />
             ))}
           </ul>

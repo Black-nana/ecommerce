@@ -7,13 +7,14 @@ import bars from '../assets/bar-1.svg';
 import { useTable, Column } from 'react-table';
 import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { toast, ToastContainer } from 'react-toastify';
+
 import { useAuth } from '../Auth/useAuth';
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Item {
   id: number;
-  name: string;
+  title: string;
   price: number;
 }
 
@@ -32,8 +33,8 @@ const Wishlist: React.FC = () => {
   const columns = React.useMemo<Column<Item>[]>(
     () => [
       {
-        Header: 'Name', // Header of the column
-        accessor: 'name', // Value accessor
+        Header: 'Title', // Header of the column
+        accessor: 'title', // Value accessor
       },
       {
         Header: 'Price', // Header of the column
@@ -63,7 +64,10 @@ const Wishlist: React.FC = () => {
 
   return (
     <div className="w-full grid place-items-center pt-10 mb-10">
-      <ToastContainer />
+       <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <TextGradient>
         <div className="grid place-items-center my-10">
           <h1 className="text-inherit">Wish List</h1>
