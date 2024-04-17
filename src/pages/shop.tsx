@@ -46,9 +46,9 @@ function Shop() {
                 <div>
                     {filteredProducts.map(product => (
                         <div key={product.id}
-                        className='shadow-lg border-2 rounded-lg grid  p-8 cursor-default hover:scale-105 transition-all duration-200'>
+                        className='mb-10 shadow-lg border-2 rounded-lg grid  p-8 cursor-default hover:scale-105 transition-all duration-200'>
                             <Link to={`/product/${product.id}`}>
-                           <div className='flex gap-4 '>
+                           <div className='lg:flex gap-4 '>
                            <img src={product.image} alt={product.title} className='h-40 w-40'/>
                             <div>
                             <h2 className='font-bold'>{product.title}</h2>
