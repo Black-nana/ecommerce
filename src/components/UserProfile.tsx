@@ -31,6 +31,8 @@ interface User {
 
 const UserProfile: React.FC = () => {
  const { user } = useAuth();
+ console.log('user', user);
+ 
  const [profile, setProfile] = useState<User>({
     id: '',
     username: '',
@@ -52,15 +54,19 @@ const UserProfile: React.FC = () => {
     phone: '',
  });
 
- const decodedToken = user?.token && jwtDecode(user.token);
+//  const decodedToken = user?.token && jwtDecode(user.token);
+//  console.log('decoded token', decodedToken);
+ 
  const { error, isLoading } = useQuery({
     queryKey: ['ProfileData'],
     queryFn: async () => {
       try {
         const profileResponse = await axios.get(
-          `https://fakestoreapi.com/users/${decodedToken?.sub}`
+          `https://blogs-iaq6.onrender.com/register${user?.id}`
         );
         setProfile(profileResponse.data);
+        console.log('profile data from api ',profileResponse.data);
+        
         return profileResponse.data;
       } catch (error) {
         throw new Error('Failed to fetch user profile');
@@ -70,8 +76,8 @@ const UserProfile: React.FC = () => {
 
  const handleSave = async () => {
     try {
-      const response = await axios.put(
-        `https://fakestoreapi.com/users/${decodedToken?.sub}`,
+      const response = await axios.put(`
+        https://blogs-iaq6.onrender.com/register${user?.id}`,
         profile
       );
       console.log('Profile updated successfully:', response.data);

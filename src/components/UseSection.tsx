@@ -73,11 +73,11 @@ const UserSection = () => { // Renamed component to UserSection
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
+              {/* <li>
                 <Link to={`/userProfile`}>
                   <span className="justify-between">Profile</span>
                 </Link>
-              </li>
+              </li> */}
               <li onClick={handleLogout}>
                 <span>Logout</span>
               </li>

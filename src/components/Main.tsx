@@ -60,10 +60,10 @@ const Main = () => {
             path="/product/:id"
             element={<ProductDetails />}
           />
-          <Route
+          {/* <Route
             path="/userProfile"
             element={<UserProfile/>}
-          />
+          /> */}
           <Route
             path="/cart"
             element={<Cart/>}

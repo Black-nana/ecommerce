@@ -34,7 +34,7 @@ const Signup = () => {
       };
       try {
         setIsLoading(true);
-        await axios.post('https://fakestoreapi.com/users', newUserData);
+        await axios.post('https://blogs-iaq6.onrender.com/register', newUserData);
         setIsLoading(false);
         toast.success("Registration successful!");
         formik.resetForm();

@@ -14,8 +14,8 @@ const SignIn = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: 'johnd',
-      password: 'm38rmF$',
+      username: '',
+      password: '',
     },
     validationSchema: Yup.object({
       username: Yup.string()
@@ -36,23 +36,21 @@ const SignIn = () => {
       };
       const loginSuccess = await login(userData);
       setIsLoading(false);
-      console.log('loginSuccess', loginSuccess);
-      console.log('loginSuccess', userData);
+      // console.log('loginSuccess', loginSuccess);
+      // console.log('loginSuccess', userData);
       
 
       if (loginSuccess) {
         toast.success('Login successful!');
         setTimeout(() => {
           navigate('/');
-        }, 3000);
+        }, 2000);
       } else {
         toast.error('Login failed. Please try again.');
       }
     },
   });
-  useEffect(() => {
-    formik.handleSubmit();
-  }, []);
+ 
 
   return (
     <div className="py-20">

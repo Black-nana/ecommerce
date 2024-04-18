@@ -33,7 +33,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // Define the login function
   const login = async (userData: any): Promise<boolean> => {
     try {
-      const response = await axios.post<User>('https://fakestoreapi.com/auth/login', userData);
+      const response = await axios.post<User>('https://blogs-iaq6.onrender.com/login', userData);
       const responseUser = response.data;
 
       // If the login was successful, store the user's information in local storage
