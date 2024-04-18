@@ -41,35 +41,33 @@ const Jewelry = () => {
           </p>
         </div>
         <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 justify-start">
-          {products.map((product: any) => (
-            <Card
-              sx={{ maxWidth: 500 }}
-              className="flex flex-col justify-center items-center">
-              <img
-                src={product?.image}
-                alt={product?.title}
-                className="h-40 w-40"
-              />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div">
-                  {product?.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary">
-                  {product?.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Link to={`/product/${product?.id}`}>
-                  <Button size="small">Buy Me</Button>
-                </Link>
-              </CardActions>
-            </Card>
-          ))}
+        {products.map((product: any) => (
+  <Card
+    key={product.id} // Corrected: key attribute should be within curly braces
+    sx={{ maxWidth: 500 }}
+    className="flex flex-col justify-center items-center"
+  >
+    <img
+      src={product?.image}
+      alt={product?.title}
+      className="h-40 w-40"
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        {product?.title}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {product?.description}
+      </Typography>
+    </CardContent>
+    <CardActions>
+      <Link to={`/product/${product?.id}`}>
+        <Button size="small">Buy Me</Button>
+      </Link>
+    </CardActions>
+  </Card>
+))}
+
         </div>
       </div>
     </div>
