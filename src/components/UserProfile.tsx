@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
-import { jwtDecode } from 'jwt-decode';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import TextGradient from './TextGradient';

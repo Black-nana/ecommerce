@@ -13,13 +13,15 @@ import About from '../pages/About';
 import Signup from '../pages/Signup';
 import SignIn from '../pages/SignIn';
 import { AuthProvider } from '../Auth/useAuth';
-import UserProfile from './UserProfile';
 import Cart from './Cart';
 import Wishlist from './WishList';
 import Contact from '../pages/Contact';
 import { CheckOut } from '../pages/CheckOut';
 import OrderHistory from '../pages/OrderHistory';
 import Shop from '../pages/shop';
+
+
+
 
 const queryClient = new QueryClient();
 const Main = () => {

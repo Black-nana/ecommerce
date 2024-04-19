@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import banner from '../assets/main banner 3.jpg'
+import banner from '../assets/mainbanner.jpeg'
 
 const Hero = () => {
   return (
@@ -7,7 +7,7 @@ const Hero = () => {
   className="w-full py-44 hero min-h-96 text-white bg-cover bg-center bg-no-repeat relative"
   style={{ backgroundImage: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',}}
 >
-  <div className="hero-overlay bg-opacity-15"></div>
+  <div className=""></div>
   <div className=" text-center text-neutral-content">
     <div className="w-full">
     <h1 className="text-6xl font-bold max-md:text-4xl text-[#f5eded]">Black Nana, Providing the quality brand!</h1>
